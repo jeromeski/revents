@@ -15,7 +15,7 @@ class EventListItem extends Component {
               <Item.Content>
                 <Item.Header as="a">{title}</Item.Header>
                 <Item.Description>
-                  Hosted by <a>{hostedBy}</a>
+                  Hosted by {hostedBy}
                 </Item.Description>
               </Item.Content>
             </Item>
@@ -30,7 +30,7 @@ class EventListItem extends Component {
         <Segment secondary>
           <List horizontal>
             {/* todo: attendees go here */}
-            {attendees.map(({id, ...attendee}) => <EventListAttendee key={id}  {...attendee}/>)}
+            {attendees && attendees.map(({id, ...attendee}) => <EventListAttendee key={id}  {...attendee}/>)}
           </List>
         </Segment>
         <Segment clearing>

@@ -12,15 +12,16 @@ class EventForm extends Component {
 
   handleFormSubmit = evt => {
     evt.preventDefault();
-    console.log(this.state)
+    this.props.createEvent(this.state)
   };
 
   // destructured evt
-  handleTitleChange = ({target: {name, value}}) => {
+
+  handleInputChange = ({target: {name, value}}) => {
     this.setState({
       [name]: value
-    });
-  };
+    })
+  }
 
   render() {
     const { cancelFormOpen } = this.props;
@@ -33,7 +34,7 @@ class EventForm extends Component {
             <input
               name="title"
               value={title}
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               placeholder="Event Title"
             />
           </Form.Field>
@@ -42,7 +43,7 @@ class EventForm extends Component {
             <input
               name="date"
               value={date}
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               type="date"
               placeholder="Event Date"
             />
@@ -52,7 +53,7 @@ class EventForm extends Component {
             <input
               name="city"
               value={city}
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               placeholder="City event is taking place"
             />
           </Form.Field>
@@ -61,7 +62,7 @@ class EventForm extends Component {
             <input
               name="venue"
               value={venue}
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               placeholder="Enter the Venue of the event"
             />
           </Form.Field>
@@ -70,7 +71,7 @@ class EventForm extends Component {
             <input
               name="hostedBy"
               value={hostedBy}
-              onChange={this.handleTitleChange}
+              onChange={this.handleInputChange}
               placeholder="Enter the name of person hosting"
             />
           </Form.Field>
