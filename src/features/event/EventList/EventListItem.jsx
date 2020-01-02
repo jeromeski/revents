@@ -4,7 +4,6 @@ import EventListAttendee from './EventListAttendee';
 
 class EventListItem extends Component {
   render() {
-    console.log(this.props)
 
     const { hostPhotoURL, title, hostedBy, date, venue, attendees, description  } = this.props
     return (
