@@ -5,7 +5,7 @@ import EventListAttendee from './EventListAttendee';
 class EventListItem extends Component {
   render() {
 
-    const { hostPhotoURL, title, hostedBy, date, venue, attendees, description  } = this.props
+    const { hostPhotoURL, title, hostedBy, date, venue, attendees, description, event, selectEvent } = this.props
     return (
       <Segment.Group>
         <Segment>
@@ -35,7 +35,7 @@ class EventListItem extends Component {
         </Segment>
         <Segment clearing>
           <span>{description}</span>
-          <Button as="a" color="teal" floated="right" content="View" />
+          <Button onClick={() => selectEvent(event)} as="a" color="teal" floated="right" content="View" />
         </Segment>
       </Segment.Group>
     );
