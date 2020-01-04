@@ -5,17 +5,17 @@ import EventListAttendee from './EventListAttendee';
 class EventListItem extends Component {
   render() {
 
-    const { hostPhotoURL, title, hostedBy, date, venue, attendees, description, event, selectEvent } = this.props
+    const { event, selectEvent } = this.props
     return (
       <Segment.Group>
         <Segment>
           <Item.Group>
             <Item>
-              <Item.Image size="tiny" circular src={hostPhotoURL} />
+              <Item.Image size="tiny" circular src={event.hostPhotoURL} />
               <Item.Content>
-                <Item.Header as="a">{title}</Item.Header>
+                <Item.Header as="a">{event.title}</Item.Header>
                 <Item.Description>
-                  Hosted by {hostedBy}
+                  Hosted by {event.hostedBy}
                 </Item.Description>
               </Item.Content>
             </Item>
@@ -23,18 +23,18 @@ class EventListItem extends Component {
         </Segment>
         <Segment>
           <span>
-            <Icon name="clock" /> {date} |
-            <Icon name="marker" /> {venue}
+            <Icon name="clock" /> {event.date} |
+            <Icon name="marker" /> {event.venue}
           </span>
         </Segment>
         <Segment secondary>
           <List horizontal>
             {/* todo: attendees go here */}
-            {attendees && attendees.map(({id, ...attendee}) => <EventListAttendee key={id}  {...attendee}/>)}
+            {event.attendees && event.attendees.map(({id, ...attendee}) => <EventListAttendee key={id}  {...attendee}/>)}
           </List>
         </Segment>
         <Segment clearing>
-          <span>{description}</span>
+          <span>{event.description}</span>
           <Button onClick={() => selectEvent(event)} as="a" color="teal" floated="right" content="View" />
         </Segment>
       </Segment.Group>
