@@ -21,7 +21,11 @@ class EventForm extends Component {
 
   handleFormSubmit = evt => {
     evt.preventDefault();
-    this.props.createEvent(this.state)
+    if(this.props.selectedEvent) {
+      this.props.updateEvent(this.state)
+    } else {
+      this.props.createEvent(this.state)
+    }
   };
 
   // destructured evt
