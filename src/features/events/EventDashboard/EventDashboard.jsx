@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import EventList from '../EventList/EventList';
 import { Grid, Button } from 'semantic-ui-react';
 import EventForm from '../EventForm/EventForm';
-import cuid from 'cuid'
+import {cuid} from 'cuid';
+
 
 const eventsFromDashBoard = [
   {
