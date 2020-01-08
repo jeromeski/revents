@@ -81,7 +81,7 @@ class EventDashboard extends Component {
   handleCancelForm = () => {
     this.setState({
       isOpen: false
-    })
+    });
   }
 
   handleCreateEvent = (newEvent) => {
