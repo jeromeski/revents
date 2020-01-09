@@ -87,7 +87,7 @@ class EventForm extends Component {
               placeholder="Enter the name of person hosting"
             />
           </Form.Field>
-          <Button positive type="submit">
+          <Button positive onSubmit={this.handleFormSubmit} type="submit">
             Submit
           </Button>
           <Button type="button" onClick={cancelFormOpen}>

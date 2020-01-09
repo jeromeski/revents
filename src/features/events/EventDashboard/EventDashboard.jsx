@@ -78,12 +78,8 @@ class EventDashboard extends Component {
     })
   }
 
-  handleCancelForm = () => {
-    this.setState({
-      isOpen: false
-    });
-  }
-
+  handleCancelForm = () => this.setState({isOpen: false});
+  
   handleCreateEvent = (newEvent) => {
     newEvent.id = cuid();
     newEvent.hostPhotoURL = '/assets/user.png'
@@ -144,7 +140,8 @@ class EventDashboard extends Component {
                 updateEvent={this.handleUpdateEvent}
                 selectedEvent={selectedEvent}
                 createEvent={this.handleCreateEvent} 
-                cancelFormOpen={this.handleCancelForm}/>
+                cancelFormOpen={this.handleCancelForm}
+              />
             }
         </Grid.Column>
       </Grid>

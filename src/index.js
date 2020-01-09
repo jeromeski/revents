@@ -4,13 +4,17 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './app/layout/App'
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store/store';
 const rootEl = document.getElementById('root');
 
 let render = () => {
   ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>, rootEl)
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>, rootEl)
 }
 
 if (module.hot) {
