@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Container, Button } from 'semantic-ui-react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import SignOutMenu from '../Menus/SignOutMenu';
 import SignInMenu from '../Menus/SignInMenu';
 
@@ -26,7 +26,7 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} to='/' exact header>
             <img
               className='logo' 
-              src="assets/logo.png" 
+              src="/assets/logo.png" 
               alt="logo" />
               Revents
           </Menu.Item>
@@ -50,4 +50,5 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
+// export default NavBar;

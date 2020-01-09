@@ -1,6 +1,5 @@
 import React from 'react';
 import { Menu, Button } from 'semantic-ui-react';
-import { withRouter } from 'react-router-dom'
 
 const SignOutMenu = ({signIn}) => {
   return (
@@ -18,6 +17,6 @@ const SignOutMenu = ({signIn}) => {
   );
 };
 
-export default withRouter(SignOutMenu);
+export default SignOutMenu;
 
 // allan.p@albasupplies.com
