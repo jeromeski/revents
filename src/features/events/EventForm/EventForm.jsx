@@ -19,23 +19,24 @@ class EventForm extends Component {
       )}
   }
 
-  handleFormSubmit = evt => {
-    evt.preventDefault();
-    if(this.props.selectedEvent) {
-      this.props.updateEvent(this.state)
-    } else {
-      this.props.createEvent(this.state)
-    }
-  };
-
   // destructured evt
   handleInputChange = ({target: {name, value}}) => {
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
+
+  handleFormSubmit = evt => {
+    evt.preventDefault();
+    if(this.state.id) {
+      this.props.updateEvent(this.state);
+    } else {
+      this.props.createEvent(this.state);
+    }
+  };
 
   render() {
+    console.log(this.state)
     const { cancelFormOpen } = this.props;
     const { title, date, city, venue, hostedBy } = this.state;
     return (
