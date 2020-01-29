@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { createEvent, updateEvent } from "../../../redux/events/eventActions";
 import cuid from "cuid";
 import TextInput from "../../../app/common/form/TextInput";
+import TextArea from "../../../app/common/form/TextArea";
+import SelectInput from "../../../app/common/form/SelectInput";
 
 const mapStateToProps = (state, ownProps) => {
   const eventId = ownProps.match.params.id;
@@ -28,8 +30,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const actions = { createEvent, updateEvent };
 
-class EventForm extends Component {
+const category = [
+    {key: 'drinks', text: 'Drinks', value: 'drinks'},
+    {key: 'culture', text: 'Culture', value: 'culture'},
+    {key: 'film', text: 'Film', value: 'film'},
+    {key: 'food', text: 'Food', value: 'food'},
+    {key: 'music', text: 'Music', value: 'music'},
+    {key: 'travel', text: 'Travel', value: 'travel'},
+];
 
+class EventForm extends Component {
   handleFormSubmit = evt => {
     evt.preventDefault();
     if (this.state.id) {
@@ -51,7 +61,7 @@ class EventForm extends Component {
       <Grid>
         <Grid.Column width={10}>
           <Segment>
-            <Header sub color='teal' content='Event Details'/>
+            <Header sub color="teal" content="Event Details" />
             <Form onSubmit={this.handleFormSubmit} autoComplete="off">
               <Field
                 name="title"
@@ -60,15 +70,18 @@ class EventForm extends Component {
               />
               <Field
                 name="category"
-                component={TextInput}
+                component={SelectInput}
+                options={category}
                 placeholder="What is your event about?"
               />
               <Field
                 name="description"
-                component={TextInput}
+                type="text"
+                rows={3}
+                component={TextArea}
                 placeholder="Tell us about your event"
               />
-              <Header sub color='teal' content='Event Location Details'/>
+              <Header sub color="teal" content="Event Location Details" />
               <Field
                 name="city"
                 component={TextInput}
