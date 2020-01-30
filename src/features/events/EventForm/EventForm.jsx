@@ -41,7 +41,8 @@ const validate = combineValidators({
     })
   )(),
   city: isRequired("city"),
-  venue: isRequired("venue")
+  venue: isRequired("venue"),
+  date: isRequired('date')
 });
 
 const category = [
@@ -119,6 +120,9 @@ class EventForm extends Component {
               <Field
                 name="date"
                 component={DateInput}
+                dateFormat='dd LLL yyyy h:mm a'
+                showTimeSelect
+                timeFormat='HH:mm'
                 placeholder="Event Date"
               />
               <Button
