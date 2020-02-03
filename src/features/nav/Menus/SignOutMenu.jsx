@@ -19,5 +19,3 @@ const SignOutMenu = ({signIn, register}) => {
 };
 
 export default SignOutMenu;
-
-// allan.p@albasupplies.com
