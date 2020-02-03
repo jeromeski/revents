@@ -9,12 +9,14 @@ import UserDetailedPage from "../../features/user/UserDetailed/UserDetailedPage"
 import SettingsDashboard from "../../features/user/Settings/SettingsDashboard";
 import EventForm from "../../features/events/EventForm/EventForm";
 import HomePage from "../../features/home/HomePage";
-import TestArea from "../../features/test-area/TestArea";
+import ModalManager from "../../features/modals/ModalManager";
+import TestComponent from "../../features/test-area/TestComponent";
 
 class App extends Component {
   render() {
     return (
       <Fragment>
+        <ModalManager />
         <Route exact path="/" component={HomePage} />
         <Route
           path="/(.+)"
@@ -32,7 +34,7 @@ class App extends Component {
                     path={["/createEvent", "/manage/:id"]}
                     component={EventForm}
                   />
-                  <Route path="/test" component={TestArea} />
+                  <Route path="/test" component={TestComponent} />
                 </Switch>
               </Container>
             </Fragment>
