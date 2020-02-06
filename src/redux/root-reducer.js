@@ -4,6 +4,7 @@ import testReducer from "../features/test-area/testReducer";
 import eventReducer from "./events/eventReducer";
 import modalReducer from "../features/modals/modalReducer";
 import authReducer from "../features/auth/authReducer";
+import asyncReducer from "../features/async/asyncReducer";
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   test: testReducer,
   events: eventReducer,
   modals: modalReducer,
-  auth: authReducer
+  auth: authReducer,
+  async: asyncReducer
 });

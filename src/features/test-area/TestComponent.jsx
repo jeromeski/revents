@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { incrementCounter, decrementCounter } from "./test-actions";
+import { incrementAsync, decrementAsync } from "./test-actions";
 import TestPlaceInput from "./TestPlaceInput";
 import SimpleMap from "./SimpleMap";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-import { openModal } from '../modals/modalActions';
+import { openModal } from "../modals/modalActions";
 
-const mapStateToProps = ({ test: { data } }) => ({
-  data
+const mapStateToProps = state => ({
+  data: state.test.data,
+  loading: state.async.loading
 });
 
 const mapDistpatchToProps = {
-  incrementCounter,
-  decrementCounter,
+  incrementAsync,
+  decrementAsync,
   openModal
 };
 
@@ -33,12 +34,18 @@ class TestArea extends Component {
   };
 
   render() {
-    const { data, incrementCounter, decrementCounter, openModal } = this.props;
+    const {
+      data,
+      incrementAsync,
+      decrementAsync,
+      openModal,
+      loading
+    } = this.props;
     return (
       <div>
         <h1> The data is: {data} </h1>
-        <Button onClick={incrementCounter} positive content="increment" />
-        <Button onClick={decrementCounter} negative content="decrement" />
+        <Button loading={loading} onClick={incrementAsync} positive content="increment" />
+        <Button loading={loading} onClick={decrementAsync} negative content="decrement" />
         <Button
           onClick={() => openModal("TestModal", { data: 42 })}
           color="teal"
