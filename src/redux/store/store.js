@@ -7,6 +7,8 @@ const middlewares = [thunk]
 
 const composedEnhancer = composeWithDevTools(applyMiddleware(...middlewares))
 
-const store = createStore(rootReducer, composedEnhancer);
+export const configureStore = () => {
+  const store = createStore(rootReducer, composedEnhancer);
+  return store
+}
 
-export default store;

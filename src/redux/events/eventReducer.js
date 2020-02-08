@@ -1,25 +1,30 @@
-import eventsData from "../../eventsData";
-import { CREATE_EVENT, UPDATE_EVENT, DELETE_EVENT } from "./eventConstants";
 
-const INITIAL_STATE = eventsData;
+import { createReducer } from '../../app/common/util/reducerUtils'
+import { CREATE_EVENT, DELETE_EVENT, UPDATE_EVENT, FETCH_EVENTS } from './eventConstants';
 
-const eventReducer = (state=INITIAL_STATE, action) => {
-  switch(action.type) {
+ const initialState = [];
 
-    case CREATE_EVENT:
-      return [...state, action.payload.event]
-
-    case UPDATE_EVENT:
-      return [...state.filter(event => event.id !== action.payload.event.id), action.payload.event
-      ]
-    
-    case DELETE_EVENT:
-      return [...state.filter(event => event.id !== action.payload.eventId)]
-    
-    default:
-      return state 
+  export const createEvent = (state, payload) => {
+      return [...state, payload.event ]
   }
-}
 
+  export const updateEvent = (state, payload) => {
+      return [
+          ...state.filter(event => event.id !== payload.event.id), payload.event
+      ]
+  }
 
-export default eventReducer;
+  export const deleteEvent = (state, payload) => {
+      return [...state.filter(event => event.id !== payload.eventId)]
+  }
+  
+  export const fetchEvents = (state, payload) => {
+      return payload.events
+  }
+
+  export default createReducer(initialState, {
+      [CREATE_EVENT]: createEvent,
+      [UPDATE_EVENT]: updateEvent,
+      [DELETE_EVENT]: deleteEvent,
+      [FETCH_EVENTS]: fetchEvents
+  })

@@ -1,5 +1,7 @@
 import { DECREMENT_COUNTER, INCREMENT_COUNTER } from "./test-types"
-import { asyncActionStart, asyncActionFinish } from "../async/asyncActions"
+import { ASYNC_ACTION_START } from "../../redux/async/asyncConstants"
+import { asyncActionFinish } from "../../redux/async/asyncActions"
+
 
 
 export const incrementCounter = () => ({
@@ -14,18 +16,18 @@ const delay = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export const incrementAsync = () => {
+export const incrementAsync = (name) => {
   return async dispatch => {
-    dispatch(asyncActionStart())
+    dispatch({type: ASYNC_ACTION_START, payload: name})
     await delay(1000)
     dispatch(incrementCounter())
     dispatch(asyncActionFinish())
   };
 };
 
-export const decrementAsync = () => {
+export const decrementAsync = (name) => {
   return async dispatch => {
-    dispatch(asyncActionStart())
+    dispatch({type: ASYNC_ACTION_START, payload: name})
     await delay(1000)
     dispatch({type: DECREMENT_COUNTER})
     dispatch(asyncActionFinish())

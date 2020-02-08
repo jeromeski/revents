@@ -9,13 +9,14 @@ import { openModal } from "../modals/modalActions";
 
 const mapStateToProps = state => ({
   data: state.test.data,
-  loading: state.async.loading
+  loading: state.async.loading,
+  buttonName: state.async.elementName
 });
 
 const mapDistpatchToProps = {
   incrementAsync,
   decrementAsync,
-  openModal
+  openModal,
 };
 
 class TestArea extends Component {
@@ -39,13 +40,26 @@ class TestArea extends Component {
       incrementAsync,
       decrementAsync,
       openModal,
-      loading
+      loading,
+      buttonName
     } = this.props;
     return (
       <div>
         <h1> The data is: {data} </h1>
-        <Button loading={loading} onClick={incrementAsync} positive content="increment" />
-        <Button loading={loading} onClick={decrementAsync} negative content="decrement" />
+        <Button
+          name="increment"
+          loading={buttonName === 'increment' && loading}
+          onClick={e => incrementAsync(e.target.name)}
+          positive
+          content="increment"
+        />
+        <Button
+          name="decrement"
+          loading={buttonName === 'decrement' && loading}
+          onClick={e => decrementAsync(e.target.name)}
+          negative
+          content="decrement"
+        />
         <Button
           onClick={() => openModal("TestModal", { data: 42 })}
           color="teal"
