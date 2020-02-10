@@ -16,7 +16,7 @@
     "react-infinite-scroller": "latest",
     "react-lazyload": "latest",
     "react-places-autocomplete": "latest",
-    "react-redux": "latest",
+    "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.2.6",
     "react-redux-toastr": "latest",
     "react-router-dom": "latest",

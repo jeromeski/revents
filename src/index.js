@@ -7,12 +7,12 @@ import App from "./app/layout/App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import ScrollToTop from "./app/common/util/ScrollToTop";
-import { loadEvents } from "./redux/events/eventActions";
+
 import { configureStore } from "./redux/store/store";
 import ReduxToastr from "react-redux-toastr";
 
 const store = configureStore();
-store.dispatch(loadEvents());
+
 
 const rootEl = document.getElementById("root");
 
