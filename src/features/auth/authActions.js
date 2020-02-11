@@ -30,14 +30,15 @@ export const registerUser = user => async (
     console.log(createdUser);
     await createdUser.user.updateProfile({
       displayName: user.displayName
-    })
+    });
     let newUser = {
       displayName: user.displayName,
       createdAt: firestore.FieldValue.serverTimestamp()
     };
-    await firestore.set(`users/${createdUser.user.uid}`, {...newUser})
+    await firestore.set(`users/${createdUser.user.uid}`, { ...newUser });
     dispatch(closeModal());
   } catch (error) {
     console.log(error);
+    throw new SubmissionError({ _error: error.message });
   }
 };
