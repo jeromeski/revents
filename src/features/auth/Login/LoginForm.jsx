@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Segment, Button, Label } from "semantic-ui-react";
+import { Form, Segment, Button, Label, Divider } from "semantic-ui-react";
 import { Field, reduxForm } from "redux-form";
 
 import { login } from "../authActions";
 import { connect } from "react-redux";
 import TextInput from "../../../app/common/form/TextInput";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const mapDispatchToProps = {
   login
@@ -12,7 +13,7 @@ const mapDispatchToProps = {
 
 const LoginForm = ({ login, handleSubmit, error }) => {
   return (
-    <Form size="large" onSubmit={handleSubmit(login)} autoComplete='off'>
+    <Form size="large" onSubmit={handleSubmit(login)} autoComplete="off">
       <Segment>
         <Field
           name="email"
@@ -26,10 +27,16 @@ const LoginForm = ({ login, handleSubmit, error }) => {
           type="password"
           placeholder="password"
         />
-        {error && <Label basic color='red'>{error}</Label>}
+        {error && (
+          <Label basic color="red">
+            {error}
+          </Label>
+        )}
         <Button fluid size="large" color="teal">
           Login
         </Button>
+        <Divider horizontal> Or </Divider>
+        <SocialLogin />
       </Segment>
     </Form>
   );
