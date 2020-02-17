@@ -12,15 +12,17 @@ import DateInput from "../../../app/common/form/DateInput";
 import PlaceInput from "../../../app/common/form/PlaceInput";
 import TextInput from "../../../app/common/form/TextInput";
 import RadioInput from "../../../app/common/form/RadioInput";
+// import { addYears } from "date-fns";
 import moment from "moment";
+
 
 class BasicPage extends Component {
   render() {
-    const { pristine, submitting } = this.props;
+    const { pristine, submitting, handleSubmit, updateProfile} = this.props;
     return (
       <Segment>
         <Header dividing size="large" content="Basics" />
-        <Form>
+        <Form onSubmit={handleSubmit(updateProfile)}>
           <Field
             width={8}
             name="displayName"
@@ -54,7 +56,7 @@ class BasicPage extends Component {
             showYearDropdown={true}
             showMonthDropdown={true}
             dropdownMode="select"
-            maxDate={moment().subtract(18, "years")}
+            maxDate={moment().subtract(18, 'years')}
           />
           <Field
             name="city"

@@ -11,7 +11,7 @@ const mapDispatchToProps = {
   openModal
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   auth: state.firebase.auth,
   profile: state.firebase.profile
 });
@@ -39,7 +39,6 @@ class NavBar extends Component {
           <Menu.Item as={NavLink} exact to="/events" name="Events" />
           {authenticated && (
             <Fragment>
-              
               <Menu.Item as={NavLink} to="/people" name="People" />
               <Menu.Item as={NavLink} to="/test" name="Test" />
               <Menu.Item>
@@ -55,10 +54,7 @@ class NavBar extends Component {
             </Fragment>
           )}
           {authenticated ? (
-            <SignInMenu
-              signOut={this.handleSignOut}
-              profile={profile}
-            />
+            <SignInMenu signOut={this.handleSignOut} profile={profile} />
           ) : (
             <SignOutMenu
               signIn={this.handleSignIn}
@@ -71,4 +67,6 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(withFirebase(connect(mapStateToProps, mapDispatchToProps)(NavBar)));
+export default withRouter(
+  withFirebase(connect(mapStateToProps, mapDispatchToProps)(NavBar))
+);
